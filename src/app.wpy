@@ -16,13 +16,40 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index',
+      'pages/mall',
+      'pages/me'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTitleText: '钢铁',
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh: true
+    },
+    tabBar: {
+      "backgroundColor":"#000",
+      "color":"#888",
+      "selectedColor":"#fff",
+      "borderStyle":"white",
+      "list": [{
+        "pagePath": "pages/index",
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_active.png"
+      },
+      {
+        "pagePath": "pages/mall",
+        "text": "商城",
+        "iconPath": "images/mall.png",
+        "selectedIconPath": "images/mall_active.png"
+      },
+      {
+        "pagePath": "pages/me",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user_active.png"
+      }]
     }
   }
 
