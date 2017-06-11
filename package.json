@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.2.8",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "wepy npm install wepy-cli -g --watch",
+    "build": "cross-env NODE_ENV=production wepy build --no-cache",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wepy": "^1.5.5",
+    "wepy-async-function": "^1.4.4",
+    "wepy-com-toast": "^1.0.2"
+  },
+  "devDependencies": {
+    "wepy-compiler-babel": "^1.5.1",
+    "wepy-compiler-less": "^1.3.10"
+  }
+}
