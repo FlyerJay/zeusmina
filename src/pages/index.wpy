@@ -10,6 +10,66 @@
       }
     }
   }
+  .catalog{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    height:160rpx;
+    width:750rpx;
+    justify-content:space-around;
+    .catalog-item{
+      width:100rpx;
+      height:100rpx;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      border-radius:20rpx;
+      image{
+        width:40rpx;
+        height:40rpx;
+      }
+      text{
+        font-size:24rpx;
+        color:#fff;
+        font-family:"微软雅黑";
+      }
+    }
+  }
+  .good-container{
+    .title{
+      width:700rpx;
+      padding:0 25rpx;
+      font-size:32rpx;
+      line-height:2em;
+    }
+    .good-list{
+      padding:0 25rpx;
+      .good-item{
+        width:350rpx;
+        float:left;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        image{
+          width:160rpx;
+          height:160rpx;
+        }
+        .good-name{
+          color:#888;
+          font-size:30rpx;
+          font-family:"微软雅黑";
+        }
+        .price{
+          color:#e6283f;
+          font-size:30rpx;
+          font-family:"微软雅黑";
+          font-weight:700;
+        }
+      }
+    }
+  }
 </style>
 <template>
   <view class="container">
@@ -20,6 +80,26 @@
         </swiper-item>
       </block>
     </swiper>
+    <view class="catalog">
+      <block wx:for="{{catalogs}}" wx:key="{{*this}}">
+        <view class="catalog-item" style="background-color:{{item.color}}">
+          <image src="{{item.img}}" />
+          <text>{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="good-container">
+      <view class="title"><text>{{goods.title}}</text></view>
+      <view class="good-list">
+        <block wx:for="{{goods.list}}" wx:key="{{*this}}">
+          <view class="good-item">
+            <image src="{{item.coverImage}}" />
+            <text class="good-name">{{item.name}}</text>
+            <text class="price">{{item.price}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -38,7 +118,49 @@
       imgUrls:[
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497197637719&di=8e20bce3593149be204910988b518750&imgtype=0&src=http%3A%2F%2Fpic67.nipic.com%2Ffile%2F20150514%2F21036787_181947848862_2.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497197637719&di=3e7f059c3e4715592b41fbf91206fbcc&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F11%2F09%2F64%2F39i58PICmgE.jpg',
-      ]
+      ],
+      catalogs:[
+        {
+          name:"精选",
+          img:"../images/cream.png",
+          color:"#ff9900",
+        },
+        {
+          name:"优惠",
+          img:"../images/benifit.png",
+          color:"#2d8cf0",  
+        },
+        {
+          name:"专题",
+          img:"../images/topic.png",
+          color:"#19be6b",
+        },
+        {
+          name:"全部",
+          img:"../images/all.png",
+          color:"#ed3f14",
+        }
+      ],
+      goods:{
+        title:"推荐商品",
+        list:[{
+          name:"精选蓝莓2盒",
+          price:"19.8",
+          coverImage:"http://img.alicdn.com/bao/uploaded/i4/TB1wtbuQFXXXXa6aXXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp"
+        },{
+          name:"金枕头榴莲9-10斤",
+          price:"118",
+          coverImage:"http://img.alicdn.com/bao/uploaded/i1/TB1B98eJFXXXXbiXpXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp",
+        },{
+          name:"美国夏橙4个",
+          price:"13.8",
+          coverImage:"http://img.alicdn.com/bao/uploaded/i1/TB1bQLmQFXXXXc8aXXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp"
+        },{
+          name:"越南草虾（16-20只）400g",
+          price:"37",
+          coverImage:"http://img.alicdn.com/bao/uploaded/i4/TB1N1JKOXXXXXXuaFXXXXXXXXXX_!!0-item_pic.jpg_196x196Q90s50.jpg_.webp"
+        }]
+      }
     }
   }
 </script>
