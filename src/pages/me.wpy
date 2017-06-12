@@ -1,15 +1,120 @@
 <style lang="less">
+  @import '../style/iconfont.less';
   .user-info{
-    height:120px;
+    height:240rpx;
     background-color:#888;
     width:750rpx;
-    filter:blur(1px);
-    background-image:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497200672619&di=01dbd820e343713ddf34dd3cc082eeac&imgtype=0&src=http%3A%2F%2Fimg15.3lian.com%2F2015%2Fa1%2F16%2Fd%2F173.jpg");
+    border-bottom:1px solid #ccc;
+    position:relative;
+    overflow:hidden;
+    .user-bg{
+      height:100%;
+      width:100%;
+      filter:blur(5px);
+      background-position:center;
+    }
+    .base-info{
+      height:240rpx;
+      width:750rpx;
+      position:absolute;
+      left:0;
+      top:0;
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      color:#fff;
+      font-family:"微软雅黑";
+      font-size:36rpx;
+    }
+    .user-avator{
+      height:120rpx;
+      width:120rpx;
+      border-radius:120rpx;
+      overflow:hidden;
+      margin-left:25rpx;
+      image{
+        width:100%;
+        height:100%;
+      }
+    }
+    .user-name{
+      margin-left:25rpx;
+    }
+    .iconfont{
+      display:flex;
+      flex-direction:row;
+      justify-content:flex-end;
+      align-items:center;
+      flex:1;
+      margin-right:25rpx;
+      font-size:40rpx;
+      font-weight:bold;
+    }
+  }
+  .form-list{
+    font-family:"微软雅黑";
+    .form-control{
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      justify-content:flex-start;
+      width:700rpx;
+      padding:0 25rpx;
+      height:90rpx;
+      line-height:90rpx;
+      color:#888;
+      border-bottom:1px #efefef solid;
+      .iconfont{
+        font-size:34rpx;
+      }
+      .form-name{
+        font-size:32rpx;
+        margin-left:20rpx;
+      }
+      .icon-right{
+        position:absolute;
+        right:25rpx;
+        font-weight:bold;
+      }
+    }
   }
 </style>
 <template>
   <view class="container">
     <view class="user-info">
+      <view class="user-bg" style="background-image:url({{backgroundImage}})">
+      </view>
+      <view class="base-info">
+        <view class="user-avator">
+          <image src="../images/avator.jpg"></image>
+        </view>
+        <view class="user-name">
+          {{userName}}
+        </view>
+        <view class="iconfont icon-right"></view>
+      </view>
+    </view>
+    <view class="form-list">
+      <view class="form-control">
+        <view class="iconfont icon-location"></view>
+        <view class="form-name">收货地址</view>
+        <view class="iconfont icon-right"></view>
+      </view>
+      <view class="form-control">
+        <view class="iconfont icon-order"></view>
+        <view class="form-name">我的订单</view>
+        <view class="iconfont icon-right"></view>
+      </view>
+      <view class="form-control">
+        <view class="iconfont icon-cart"></view>
+        <view class="form-name">购物车</view>
+        <view class="iconfont icon-right"></view>
+      </view>
+      <view class="form-control">
+        <view class="iconfont icon-coupon"></view>
+        <view class="form-name">优惠券</view>
+        <view class="iconfont icon-right"></view>
+      </view>
     </view>
   </view>
 </template>
@@ -18,6 +123,10 @@
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '我的资料'
+    }
+    data = {
+      backgroundImage:"../images/avator.jpg",
+      userName:"请先登录"
     }
   }
 </script>
